@@ -16,7 +16,7 @@ class TicketsController < ApplicationController
       redirect_to [@project, @ticket]
     else
       flash[:alert] = "Ticket has not been created."
-      render action: new
+      render action: "new"
     end
   end
 
@@ -35,6 +35,12 @@ class TicketsController < ApplicationController
       render action: "edit"
     end
   end
+
+  def destroy
+    @ticket.destroy
+    flash[:notice] = "Ticker has been deleted."
+    redirect_to @project
+  end        
 
   private
 
